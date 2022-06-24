@@ -4,7 +4,9 @@
   "description": "This project wants to bring the largest social networking platforms in one place to enable creators to share their touchts an ideas easier. The big take away will be the integration with GitHub(push, pull actions) that will make the life of developers easier by sharing the changes or the big version changes using a predefined template .",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:api": "npm run start -w=api",
+    "dev:web": "npm run start -w=web ",
+    "dev": "concurrently \" npm run dev:api \" \" npm run dev:web \""
   },
   "repository": {
     "type": "git",
@@ -16,10 +18,13 @@
   "bugs": {
     "url": "https://github.com/BlitzStudio/social-hub/issues"
   },
-  "proxy":"http://localhost:5000",
+  "proxy": "http://localhost:5000",
   "homepage": "https://github.com/BlitzStudio/social-hub#readme",
   "workspaces": [
     "api",
     "web"
-  ]
+  ],
+  "dependencies": {
+    "concurrently": "^7.2.2"
+  }
 }
