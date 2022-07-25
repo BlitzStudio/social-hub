@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"tsc \" \" nodemon ../dist/api/server.js \""
+    "start": "nodemon server.ts"
   },
   "repository": {
     "type": "git",
