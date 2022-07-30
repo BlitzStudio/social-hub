@@ -1,15 +1,22 @@
-import express, { Express, Response, Request } from "express";
+import express, { application, Express, Request, Response } from "express";
+import path from "path";
 import "dotenv/config";
-const PORT = process.env["port"];
 
-const app: Express = express();
+const App = express();
+const port = process.env["Port"];
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("HEllO the api is working");
+App.use(express.static(path.join(__dirname, "/public")));
+
+App.set("views", path.join(__dirname, "/web"));
+App.set("view engine", "ejs");
+App.engine("ejs", require("ejs-mate"));
+
+App.get("/", (req: Request, res: Response) => {
+  res.render("home");
 });
 
-app.listen(PORT, () => {
+App.listen(port, () => {
   console.log(
-    `[EXPRESS-SERVER]: The express server is listening on http://localhost:${PORT}`
+    `[EXPRESS-SERVER]: The app is listening at http://localhost:${port}}`
   );
 });
